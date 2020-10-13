@@ -2,7 +2,7 @@ import random
 import unittest
 
 VERSION = 0.01
-#################updated 10/4/2020
+ 
 class Card:
     '''a standard playing card
     cards will have a suit and a rank
@@ -87,11 +87,11 @@ class Deck:
         random.shuffle(self.cards)
  
     def replace_card(self, card):
-		card_strs = [] # forming an empty list
-		for c in self.cards: # each card in self.cards (the initial list)
-			card_strs.append(c.__str__()) # appends the string that represents that card to the empty list
-		if card.__str__() not in card_strs: # if the string representing this card is not in the list already
-			self.cards.append(card) # append it to the list
+        card_strs = [] # forming an empty list
+        for c in self.cards: # each card in self.cards (the initial list)
+            card_strs.append(c.__str__()) # appends the string that represents that card to the empty list
+        if card.__str__() not in card_strs: # if the string representing this card is not in the list already
+            self.cards.append(card) # append it to the list
     
     def sort_cards(self):
         '''returns the Deck to its original order
@@ -147,11 +147,3 @@ def print_hand(hand):
         r = c.rank_name[0]
         hand_str += r + "of" + s + ' / '
     print(hand_str)
- 
- #############
-## The following is a line to run all of the tests you include:
-if __name__ == "__main__":
-    print("test")
-    A = Card(1,12)
-    A.__str__
-## verbosity 2 to see detail about the tests the code fails/passes/etc.

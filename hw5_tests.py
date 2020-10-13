@@ -1,3 +1,7 @@
+#########################################
+##### Name: Guoqin Yin              #####
+##### Uniqname: guoqin              #####
+#########################################
 import unittest
 import hw5_cards
 
@@ -34,8 +38,11 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y
+        for suit in range(4):
+            card = hw5_cards.Card(suit, 12)
+            self.assertEqual(card.rank_name, "Queen")
+
+        # return X, Y
     
     def test_q2(self):
         '''
@@ -49,7 +56,9 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
+        for rank in range(1,14):
+            card = hw5_cards.Card(1, rank)
+            self.assertEqual(card.suit_name, "Clubs")
         #return X, Y    
     
 
@@ -66,7 +75,8 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
+        card = hw5_cards.Card(3, 13)
+        self.assertEqual(card.__str__(), "King of Spades")
         #return X, Y
     
     def test_q4(self):
@@ -81,7 +91,8 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
+        deck = hw5_cards.Deck()
+        self.assertEqual(len(deck.cards), 52)
         #return X, Y  
 
     def test_q5(self):
@@ -96,7 +107,9 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
+        deck = hw5_cards.Deck()
+        self.assertTrue(type(deck.deal_card()) is hw5_cards.Card)
+
         #return X, Y
     
     def test_q6(self):
@@ -112,7 +125,10 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
+        deck = hw5_cards.Deck()
+        num_cards = len(deck.cards)
+        deck.deal_card()
+        self.assertEqual(num_cards - 1, len(deck.cards)) 
         #return X, Y    
     
 
@@ -129,7 +145,12 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
+        deck = hw5_cards.Deck()
+        card = deck.deal_card()      #deal card
+        num_cards = len(deck.cards) # number of cards after deal card
+        deck.replace_card(card)     # add the same card back
+        self.assertEqual(num_cards + 1, len(deck.cards))
+
         #return X, Y
     
     def test_q8(self):
@@ -145,7 +166,11 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
+        deck = hw5_cards.Deck()
+        card = hw5_cards.Card() # card to be added, which is already in the deck
+        num_cards = len(deck.cards) # number of cards after deal card
+        deck.replace_card(card)     # try to add the card 
+        self.assertEqual(num_cards, len(deck.cards))
         #return X, Y  
 
 
